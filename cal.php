@@ -102,7 +102,7 @@
   		 <table style="width:50%" border="1">
   <caption>The PAYE Calculator</caption>  			
 
- <thead>
+			<thead>
   			<tr>
 				<th></th>
 				<th>Annual</th>
@@ -116,41 +116,41 @@
 			 	<td>Gross Salary
 				</td>
 			<td>
-				<input type="varchar" class="form-control" style="border:none;  width: 98%"  name="Gross" placeholder= "Enter your annual gross salary" value="<?php echo "$gross";?>">
+				<input type="varchar" class="form-control" style="border:none;  width: 98%"  name="Gross" placeholder= "Enter your annual gross salary" value="<?php echo number_format(floatval("$gross"),2,".",",");?>">
 			</td>
-			<td> <input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlygross";?>" disabled>
+			<td> <input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlygross"),2,".",",");?>" disabled>
 			</td>
 			<td>Amount on Employment contract </td>
 			</tr>
 			<tr>
 				<td>Tax Payable</td>
 				<td>
-				<input type="varchar"  class="form-control" style="border:none;  width: 98%" value="<?php echo "$taxpayable";?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo "$monthlytax";?>" disabled></td>
+				<input type="varchar"  class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$taxpayable"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo number_format(floatval("$monthlytax"),2,".",",");?>" disabled></td>
 				<td>PAYE deductions to the state tax office	</td>
 			</tr>
 			<tr>
 				<td>Pension Contribution</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo "$pension";?>" disabled>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo number_format(floatval("$pension"),2,".",",");?>" disabled>
 				</td>
 
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlypension";?>"disabled>
+				<td><input type="varchar" class="form-control" style="border:none; width: 98%" value="<?php echo number_format(floatval("$monthlypension"),2,".",",");?>" disabled>
 				</td>
 				<td>Employee portion of pension	</td>
 			</tr>
 			<tr>
 				<td>Net Takehome Pay</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$nettakehome";?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlytakehome";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$nettakehome"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlytakehome"),2,".",",");?>" disabled></td>
 				<td>Amount on cheque or credited to bank</td>
 			</tr>
 			<tr>
-				<td style="border:none" align="left" valign="middle" colspan="3">Additional Company Expenses:	</td>
+				<td style="border:none" align="center" valign="middle" colspan="4">Additional Company Expenses:	</td>
 			</tr>
 			<tr>
 				<td>Employer Pension Contribution </td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$pensioncontribution";?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlypensioncontribution";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$pensioncontribution"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlypensioncontribution"),2,".",",");?>" disabled></td>
 				<td>10% of Gross for companies with over 15 employees	</td>
 			</tr>
 			<tr>
@@ -161,19 +161,19 @@
 			</tr>
 			<tr>
 				<td>Total Benefit to Employee</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$totalbenefit";?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlytotalbenefit";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$totalbenefit"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlytotalbenefit"),2,".",",");?>" disabled></td>
 				<td> payroll and pension benefits, excluding taxes</td>
 			</tr>
 			
 			<tr>
 				<td>Total Company Expense on Employee</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$companyexpense";?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlycompanyexpense";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo  number_format (floatval("$companyexpense"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$monthlycompanyexpense"),2,".",",");?>" disabled></td>
 				<td> </td>
 			</tr>
 			<tr>
-			<td style="border:none" align="center" valign="middle" colspan="3">
+			<td style="border:none" align="center" valign="middle" colspan="4">
 			 <button type="submit"  name="submit" class="btn btn-default"  align = "center" style="background-color: #f44336; color: white;  padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block;">Analyze  Payroll</button>
 			 </td>
 			 </tr>
