@@ -143,172 +143,185 @@ $sticky          = $sd_data['sd_sticky_menu'];
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 col-md-6 col-lg-4">
+	
 		
 		
 			<?php 
- if (isset($_POST['Gross']))
+ if (isset($_POST['submit']))
 		 { 
 		 $gross = $_POST['Gross'];
 		 $monthlygross = $gross/12;
 		 $relief = 0.2*$gross;
-		 $pension = 0.2*$gross;
-		 $non_taxable = $relief + $pension;
+		 $reliefallowance = $relief + 200000;
+		 $pension = 0.08*$gross;
+		 $non_taxable = $reliefallowance + $pension;
 		 $taxable_income = $gross - $non_taxable;
 		 $monthlytaxable=$taxable_income/12;
 		 $monthlypension=$pension/12;
-		 $amount = $taxable_income;
-		 $tax1=300000;
-		 $tax2=600000;
-		 $tax3=1100000;
-		 $tax4=1600000;
-		 $tax5=3200000;
-		 $firsttax=300000*0.07;
-		 $secondtax=300000*0.11;
-		 $thirdtax=500000*0.15;
-		 $fourthtax=500000*0.19;
-		 $fifthtax= 1600000*0.21;
-
-
-
-		 function tax_1st($amount,$tax1,$percent_1)  { 
-				if ($amount < $tax1) {
-					$tax_1 = $amount * $percent_1;
-					echo $tax_1 ;
-					} else {
-						$tax_2 = $tax1*$percent_1;
-					} 
-			}
-			function tax_2nd($amount,$tax2,$percent_2,$tax1,$firsttax) { 
-				if ($amount < $tax2) {
-					  	$firstadd = ($amount-$tax1)*$percent_2;
-					  	$tax_3 = $firstadd + $firsttax;
-					  	echo $tax_3;
-					  } else {
-						$tax_4 = ($tax2-$tax1)*$percent_2;
-						echo $tax_4;
-					} 
-								}
-			function tax_3rd($amount,$tax3,$tax2,$percent_3,$firsttax,$secondtax) { 
-				 if ($amount < $tax3) {
-						$secondadd = ($amount-$tax2)*$percent_3;
-					  	$tax_5= $firsttax + $secondtax +$secondadd;
-					  	echo $tax_5;
-					  } else {
-						$tax_6 = ($tax3-$tax2)*$percent_3;
-						echo $tax_8;
-					} 
-								}
-			function tax_4th( $amount,$tax4, $tax3,$percent_4,$firsttax,$secondtax,$thirdtax) { 
-				if($amount < $tax4) {
-					  	$thirdadd = ($amount-$tax3)*$percent_4;
-					  	$tax_7=$firsttax + $secondtax + $thirdtax +$thirdadd;
-					  	echo $tax_7;
-					  } else {
-						$tax_8 = ($tax4-$tax3)*$percent_4;
-						echo $tax_8;
-					} 
-								}
-			function tax_5th($amount,$tax5,$tax4,$percent_5,$firsttax,$secondtax,$thirdtax,$fourthtax) { 
-				if ($amount < $tax5) {
-					  	$fourthadd= ($amount-$tax4)*$percent_5;
-					  	$tax_9=$firsttax + $secondtax + $thirdtax +$fourthtax+$fourthadd;
-					  	echo $tax_9;
-					  } else {
-						$tax_10 = ($tax5-$tax4)*$percent_5;
-						echo $tax_10;
-					} 
-								}
-			function tax_6th($amount, $tax5,$percent_6,$firsttax,$secondtax,$thirdtax,$fourthtax,$fifthtax) { 
-				if ($amount > $tax5) {
-					$fifthadd= ($amount-$tax5)*$percent_6;
-					$tax_9=$firsttax + $secondtax + $thirdtax +$fourthtax+$fifthtax+$fifthadd;
-						echo $tax_9;
-					} 
-								}
-
-					function tax($amount,$tax1,$tax2,$tax3,$tax4,$tax5,$firsttax,$secondtax,$thirdtax,$fourthtax,$fifthtax){
-					if ($amount <  $tax1) {
-					tax_1st($amount,$tax1,0.07);
-						
-					} elseif ($amount < $tax2) {
-					tax_2nd($amount,$tax2,0.11,$tax1,$firsttax);
-						
-						
-					} elseif ($amount < $tax3) {
-					tax_3rd($amount,$tax3,$tax2,0.15,$firsttax,$secondtax);
-						
-					} elseif ($amount < $tax4) {
-					tax_4th($amount,$tax4,$tax3,0.19,$firsttax,$secondtax,$thirdtax);
-					} elseif ($amount < $tax5) {
-					tax_5th($amount,$tax5,$tax4,0.21,$firsttax,$secondtax,$thirdtax,$fourthtax);
-					} else {
-					tax_6th($amount,3200000,0.32,$firsttax,$secondtax,$thirdtax,$fourthtax,$fifthtax);
-						
-					}
-				}
+		
+		 function computeTaxPayable($taxable_income)	{
+		 	$taxpayable = 0;
+		 	if($taxable_income < 300000)
+		 		$taxpayable = computeFirstTax($taxable_income);
+		 	elseif($taxable_income < 600000)	
+		 		$taxpayable = computeFirstTax($taxable_income) + computeSecondTax($taxable_income);
+		 	elseif ($taxable_income < 1100000) 
+		 		$taxpayable = computeFirstTax($taxable_income) + computeSecondTax($taxable_income) + computeThirdTax($taxable_income);
+		 	elseif ($taxable_income < 1600000) 
+		 		$taxpayable = computeFirstTax($taxable_income) + computeSecondTax($taxable_income) + computeThirdTax($taxable_income) + computeFourthTax($taxable_income);
+		 	elseif ($taxable_income < 3200000) 
+		 		$taxpayable = computeFirstTax($taxable_income) + computeSecondTax($taxable_income) + computeThirdTax($taxable_income) + computeFourthTax($taxable_income) + computeFifthTax($taxable_income);
+		 	else
+		 		$taxpayable = computeFirstTax($taxable_income) + computeSecondTax($taxable_income) + computeThirdTax($taxable_income) + computeFourthTax($taxable_income) + computeFifthTax($taxable_income) + computeSixthTax($taxable_income);
+		 	return $taxpayable;
+		 }
+		 function computeFirstTax($taxable_income)	{
+		 	if($taxable_income < 300000)	{
+		 		$firsttax = $taxable_income * 0.07;
+		 	}	else {
+		 		$firsttax = 0.07 * 300000;
+		 	}
+		 	return $firsttax;
+		 }
+		  function computeSecondTax($taxable_income)	{
+		  	if($taxable_income < 600000)	{
+		 		$secondtax = ($taxable_income - 300000)* 0.11;
+		 	}	else {
+		 		$secondtax = 0.11 * 300000;
+		 	}
+		 	return $secondtax;
+		 	
+		 }
+		 function computeThirdTax($taxable_income)	{
+		 	if($taxable_income < 1100000)	{
+		 		$thirdtax = ($taxable_income - 600000)* 0.15;
+		 	}	else {
+		 		$thirdtax = 0.15 * 500000;
+		 	}
+		 	return $thirdtax;
+		 }
+		 function computeFourthTax($taxable_income)	{
+		 	if($taxable_income < 1600000)	{
+		 		$fourthtax = ($taxable_income - 1100000)* 0.19;
+		 	}	else {
+		 		$fourthtax = 0.19 * 500000;
+		 	}
+		 	return $fourthtax;
+		 }
+		 function computeFifthTax($taxable_income)	{
+		 	if($taxable_income < 3200000)	{
+		 		$fifthtax = ($taxable_income - 1600000)* 0.21;
+		 	}	else {
+		 		$fifthtax = 0.21 * 1600000;
+		 	}
+		 	return $fifthtax;
+		 }
+		 function computeSixthTax($taxable_income)	{
+		 	return ($taxable_income - 3200000) * 0.24;
+		 }
 				
-				
-			
-
-		 echo "<h2>Results</h2><br>";
-		echo "<h5>The Relief Allowance is  $relief <br></h5>"; 
-		echo "<h5>The Pension  is $pension<br></h5> ";
-		echo "<h5>The Total Non Taxable Income  is $non_taxable<br></p> ";
-		echo "<h5>The Taxable Income is $taxable_income <br></h5>";
-		echo "<h5>The tax of $gross is </h5>";
-		echo  tax($amount,$tax1,$tax2,$tax3,$tax4,$tax5,$firsttax,$secondtax,$thirdtax,$fourthtax,$fifthtax);
+	
+		$taxpayable = computeTaxPayable($taxable_income);
+		$monthlytax = $taxpayable/12;
+		$nettakehome = $gross -  $pension - $taxpayable;
+		$monthlytakehome = $nettakehome / 12;
+		$pensioncontribution = $gross*0.1;
+		$monthlypensioncontribution= $pensioncontribution/12;
+		$totalbenefit=$pensioncontribution + $nettakehome + $pension;
+		$monthlytotalbenefit= $totalbenefit/12;
+		$companyexpense = $totalbenefit + $taxpayable; 
+		$monthlycompanyexpense = $companyexpense/12;
  }
  ?> 
  <form action="http://nairapayroll.com/paye-calculator/" method="POST">
 			<div class="table-responsive">
-  			<table class="table">
-  			<thead>
+  		 <table style="width:50%" border="1">
+  		 <br>
+  <caption>The PAYE Calculator</caption>
+  <br>  			
+
+ <thead>
   			<tr>
-				<td></td>
-				<td><h3>ANNUAL</h3></td>
-				<td><h3>MONTHLY</h3></td>
+				<th></th>
+				<th>Annual</th>
+				<th>Monthly</th>
+				<th>Explanation</th>
 			</tr>
 			</thead>
 			<tbody>
 				<tr>
 			
-			 	<td>
-			 	 <label for="gross">GROSS SALARY:</label>
+			 	<td>Gross Salary
 				</td>
 			<td>
-				<input type="varchar" class="form-control" size="4" name="Gross" value="<?php echo "$gross";?>">
+				<input type="varchar" class="form-control" style="border:none;  width: 98%"  name="Gross" placeholder= "Enter your annual gross salary" value="<?php echo "$gross";?>">
 			</td>
-			<td> <input type="varchar"  class="form-control" size="4" name="monthlygross" value="<?php echo "$monthlygross";?>">
+			<td> <input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlygross";?>" disabled>
 			</td>
+			<td>Amount on Employment contract </td>
 			</tr>
 			<tr>
-				<td><label for="gross">TAX PAYABLE:</label></td>
-				<td><input type="varchar"  class="form-control" size="4" name="tax" value=""></td>
-				<td><input type="varchar" class="form-control" size="4" name="monthlytax" value=""></td>
+				<td>Tax Payable</td>
+				<td>
+				<input type="varchar"  class="form-control" style="border:none;  width: 98%" value="<?php echo "$taxpayable";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo "$monthlytax";?>" disabled></td>
+				<td>PAYE deductions to the state tax office	</td>
 			</tr>
 			<tr>
-				<td><label for="gross">PENSION CONTRIBUTION:</label></td>
-				<td><input type="varchar" class="form-control" size="4" name="pension" value="<?php echo "$pension";?>"></td>
-				<td><input type="varchar" class="form-control" size="4" name="monthlypension" value="<?php echo "$monthlypension";?>"></td>
+				<td>Pension Contribution</td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo "$pension";?>" disabled>
+				</td>
+
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlypension";?>"disabled>
+				</td>
+				<td>Employee portion of pension	</td>
 			</tr>
 			<tr>
-				<td><label for="gross">NET TAKEHOME PAY:</label></td>
-				<td><input type="varchar" class="form-control" size="4" name="income" value=""></td>
-				<td><input type="varchar" class="form-control" size="4" name="monthlyincome" value=""></td>
+				<td>Net Takehome Pay</td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$nettakehome";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlytakehome";?>" disabled></td>
+				<td>Amount on cheque or credited to bank</td>
 			</tr>
 			<tr>
-			<td>
-			 <button type="submit"  name="Calculate" class="btn btn-default">Submit</button>
+				<td style="border:none" align="center" valign="middle" colspan="4">Additional Company Expenses:	</td>
+			</tr>
+			<tr>
+				<td>Employer Pension Contribution </td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$pensioncontribution";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlypensioncontribution";?>" disabled></td>
+				<td>10% of Gross for companies with over 15 employees	</td>
+			</tr>
+			<tr>
+				<td>Other Employee benefits	</td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
+				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
+			</tr>
+			<tr>
+				<td>Total Benefit to Employee</td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$totalbenefit";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlytotalbenefit";?>" disabled></td>
+				<td> payroll and pension benefits, excluding taxes</td>
+			</tr>
+			
+			<tr>
+				<td>Total Company Expense on Employee</td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$companyexpense";?>" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo "$monthlycompanyexpense";?>" disabled></td>
+				<td> </td>
+			</tr>
+			<tr>
+			<td style="border:none" align="center" valign="middle" colspan="4">
+			 <button type="submit"  name="submit" class="btn btn-default"  align = "center" style="background-color: #f44336; color: white;  padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block;">Analyze  Payroll</button>
 			 </td>
 			 </tr>
 			 </tbody>
 			 </table>
 			 </div>
 			</form>
+			<br>
+			<br>
 			
-	
-		</div>
 </div>
 </div>
 
