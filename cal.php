@@ -1,16 +1,72 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>PAYE CALCULATOR</title>
+	<style>
+		input:focus {
+   		outline:none;
+	}
+	#button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    align-self: center
+}
+	#layout {
+	border: 25px;
+    padding: 25px;
+    margin: 25px;
+		}
+		table, th, td {
+    border: 1px solid black;
+    text-align: left;
+     padding: 5px;
+}
+	</style>
 </head>
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 col-md-6 col-lg-4">
-		
-		
+				
 			<?php 
+			 $gross = NULL;
+			 $monthlygross = NULL;
+			 $relief  = NULL;
+			 $reliefallowance = NULL;
+			 $pension = NULL;
+			 $non_taxable = NULL;
+			 $taxable_income = NULL;
+			 $monthlytaxable = NULL;
+			 $monthlypension = NULL;
+			 $taxpayable = NULL;
+			 $monthlytax = NULL;
+			$nettakehome = NULL;
+			$monthlytakehome = NULL;
+			$pensioncontribution = NULL;
+			$monthlytax = NULL;
+			$nettakehome = NULL;
+			$monthlytakehome = NULL;
+			$pensioncontribution = NULL;
+			$monthlypensioncontribution= NULL;
+			$totalbenefit= NULL;
+			$monthlytotalbenefit= NULL;
+			$companyexpense = NULL; 
+			$monthlycompanyexpense = NULL;
+			$monthlypensioncontribution= NULL;
+			$totalbenefit= NULL;
+			$monthlytotalbenefit= NULL;
+			$companyexpense = NULL; 
+			$monthlycompanyexpense = NULL;
+
+
+
  if (isset($_POST['submit']))
 		 { 
 		 $gross = $_POST['Gross'];
@@ -97,9 +153,9 @@
 		$monthlycompanyexpense = $companyexpense/12;
  }
  ?> 
- <form action="cal.php" method="POST">
+ <form action="cal.php" method="POST" id="layout">
 			<div class="table-responsive">
-  		 <table style="width:50%" border="1">
+  		 <table style="width:80%" border="1">
   <caption>The PAYE Calculator</caption>  			
 
 			<thead>
@@ -155,8 +211,8 @@
 			</tr>
 			<tr>
 				<td>Other Employee benefits	</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
 				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
 			</tr>
 			<tr>
@@ -174,7 +230,7 @@
 			</tr>
 			<tr>
 			<td style="border:none" align="center" valign="middle" colspan="4">
-			 <button type="submit"  name="submit" class="btn btn-default"  align = "center" style="background-color: #f44336; color: white;  padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block;">Analyze  Payroll</button>
+			 <button type="submit"  name="submit" class="btn btn-default" id="button"  align = "center">Analyze  Payroll</button>
 			 </td>
 			 </tr>
 			 </tbody>
@@ -183,11 +239,9 @@
 			</form>
 			
 	
-		</div>
+	
 </div>
 </div>
 
 </body>
 </html>
-
- 

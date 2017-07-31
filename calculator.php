@@ -139,14 +139,72 @@ $sticky          = $sd_data['sd_sticky_menu'];
 <html>
 <head>
 	<title>PAYE CALCULATOR</title>
+	<style>
+		input:focus {
+   		outline:none;
+	}
+	#button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    align-self: center;
+}
+	#layout {
+	border: 25px;
+    padding: 25px;
+    margin: 25px;
+		}
+	table, th, td {
+    border: 1px solid black;
+    text-align: left;
+     padding: 5px;
+}
+	</style>
 </head>
 <body>
 <div class="container">
 	<div class="row">
-	
 		
 		
 			<?php 
+			 $gross = NULL;
+			 $monthlygross = NULL;
+			 $relief  = NULL;
+			 $reliefallowance = NULL;
+			 $pension = NULL;
+			 $non_taxable = NULL;
+			 $taxable_income = NULL;
+			 $monthlytaxable = NULL;
+			 $monthlypension = NULL;
+			 $taxpayable = NULL;
+			 $monthlytax = NULL;
+			$nettakehome = NULL;
+			$monthlytakehome = NULL;
+			$pensioncontribution = NULL;
+			$monthlytax = NULL;
+			$nettakehome = NULL;
+			$monthlytakehome = NULL;
+			$pensioncontribution = NULL;
+			$monthlypensioncontribution= NULL;
+			$totalbenefit= NULL;
+			$monthlytotalbenefit= NULL;
+			$companyexpense = NULL; 
+			$monthlycompanyexpense = NULL;
+			$monthlypensioncontribution= NULL;
+			$totalbenefit= NULL;
+			$monthlytotalbenefit= NULL;
+			$companyexpense = NULL; 
+			$monthlycompanyexpense = NULL;
+
+
+
  if (isset($_POST['submit']))
 		 { 
 		 $gross = $_POST['Gross'];
@@ -235,12 +293,10 @@ $sticky          = $sd_data['sd_sticky_menu'];
  ?> 
  <form action="http://nairapayroll.com/paye-calculator/" method="POST">
 			<div class="table-responsive">
-  		 <table style="width:50%" border="1">
-  		
-  <caption>The PAYE Calculator</caption>
- 			
+  		 <table style="width:80%" border="1">
+  <caption>The PAYE Calculator</caption>  			
 
- <thead>
+			<thead>
   			<tr>
 				<th></th>
 				<th>Annual</th>
@@ -293,8 +349,8 @@ $sticky          = $sd_data['sd_sticky_menu'];
 			</tr>
 			<tr>
 				<td>Other Employee benefits	</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" disabled></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
+				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
 				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
 			</tr>
 			<tr>
@@ -319,8 +375,6 @@ $sticky          = $sd_data['sd_sticky_menu'];
 			 </table>
 			 </div>
 			</form>
-			
-			
 </div>
 </div>
 
