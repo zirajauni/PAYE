@@ -143,30 +143,9 @@ $sticky          = $sd_data['sd_sticky_menu'];
 		input:focus {
    		outline:none;
 	}
-	#button{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    align-self: center;
-}
-	#layout {
-	border: 25px;
-    padding: 25px;
-    margin: 25px;
-		}
-	table, th, td {
-    border: 1px solid black;
-    text-align: left;
-     padding: 5px;
-}
+
 	</style>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <div class="container">
@@ -293,10 +272,18 @@ $sticky          = $sd_data['sd_sticky_menu'];
  ?> 
  <form action="http://nairapayroll.com/paye-calculator/" method="POST">
 			<div class="table-responsive">
-  		 <table style="width:80%" border="1">
-  <caption>The PAYE Calculator</caption>  			
+  		 <table class=" w3-table-all w3-card-4 w3-panel w3-border-0" width="40%">
+ 			
 
 			<thead>
+			<tr>
+				<th style="border:none" align="center" valign="middle" colspan="4">
+				<div style="text-align:center;">
+			  <h3> The PAYE Calculator </h3>
+			  </div>
+				</th>
+			</tr>
+			
   			<tr>
 				<th></th>
 				<th>Annual</th>
@@ -310,32 +297,32 @@ $sticky          = $sd_data['sd_sticky_menu'];
 			 	<td>Gross Salary
 				</td>
 			<td>
-				<input type="varchar" class="form-control" style="border:none;  width: 98%"  name="Gross" placeholder= "Enter your annual gross salary" value="<?php echo number_format(floatval("$gross"),2,".",",");?>">
+				<input type="varchar" class="form-control w3-round-xxlarge" name="Gross" placeholder= "Enter your annual gross salary" value="<?php echo number_format(floatval("$gross"),2,".",",");?>">
 			</td>
-			<td> <input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlygross"),2,".",",");?>" disabled>
+			<td> <input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$monthlygross"),2,".",",");?>" disabled>
 			</td>
 			<td>Amount on Employment contract </td>
 			</tr>
 			<tr>
 				<td>Tax Payable</td>
 				<td>
-				<input type="varchar"  class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$taxpayable"),2,".",",");?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo number_format(floatval("$monthlytax"),2,".",",");?>" disabled></td>
+				<input type="varchar"  class="form-control w3-round-xxlarge"  value="<?php echo number_format (floatval("$taxpayable"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$monthlytax"),2,".",",");?>" disabled></td>
 				<td>PAYE deductions to the state tax office	</td>
 			</tr>
 			<tr>
 				<td>Pension Contribution</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%"  value="<?php echo number_format(floatval("$pension"),2,".",",");?>" disabled>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"   value="<?php echo number_format(floatval("$pension"),2,".",",");?>" disabled>
 				</td>
 
-				<td><input type="varchar" class="form-control" style="border:none; width: 98%" value="<?php echo number_format(floatval("$monthlypension"),2,".",",");?>" disabled>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$monthlypension"),2,".",",");?>" disabled>
 				</td>
 				<td>Employee portion of pension	</td>
 			</tr>
 			<tr>
 				<td>Net Takehome Pay</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$nettakehome"),2,".",",");?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlytakehome"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format (floatval("$nettakehome"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$monthlytakehome"),2,".",",");?>" disabled></td>
 				<td>Amount on cheque or credited to bank</td>
 			</tr>
 			<tr>
@@ -343,36 +330,44 @@ $sticky          = $sd_data['sd_sticky_menu'];
 			</tr>
 			<tr>
 				<td>Employer Pension Contribution </td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$pensioncontribution"),2,".",",");?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlypensioncontribution"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$pensioncontribution"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format(floatval("$monthlypensioncontribution"),2,".",",");?>" disabled></td>
 				<td>10% of Gross for companies with over 15 employees	</td>
 			</tr>
 			<tr>
 				<td>Other Employee benefits	</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="-" ></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="-" ></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge" value="-" ></td>
 				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
 			</tr>
 			<tr>
 				<td>Total Benefit to Employee</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$totalbenefit"),2,".",",");?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format(floatval("$monthlytotalbenefit"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$totalbenefit"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$monthlytotalbenefit"),2,".",",");?>" disabled></td>
 				<td> payroll and pension benefits, excluding taxes</td>
 			</tr>
 			
 			<tr>
 				<td>Total Company Expense on Employee</td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo  number_format (floatval("$companyexpense"),2,".",",");?>" disabled></td>
-				<td><input type="varchar" class="form-control" style="border:none;  width: 98%" value="<?php echo number_format (floatval("$monthlycompanyexpense"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo  number_format (floatval("$companyexpense"),2,".",",");?>" disabled></td>
+				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="<?php echo number_format (floatval("$monthlycompanyexpense"),2,".",",");?>" disabled></td>
 				<td> </td>
 			</tr>
 			<tr>
-			<td style="border:none" align="center" valign="middle" colspan="4">
-			 <button type="submit"  name="submit" class="btn btn-default"  align = "center" style="background-color: #f44336; color: white;  padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block;">Analyze  Payroll</button>
-			 </td>
-			 </tr>
-			 </tbody>
+				<td style="border:none" align="center" valign="middle" colspan="2">
+				<div style="text-align:center;">
+			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" type="submit"  name="submit" >Analyze  Payroll</button>
+			  </div>
+				</td>
+				<td style="border:none" align="center" valign="middle" colspan="2">
+				<div style="text-align:center;">
+			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" type="Reset" name="Reset" value="Reset" >Reset</button>
+			  </div>
+				</td>
+			</tr>
+			  </tbody>
 			 </table>
+			 
 			 </div>
 			</form>
 </div>
