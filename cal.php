@@ -224,8 +224,8 @@
 				</td>
 				<td style="border:none" align="center" valign="middle" colspan="2">
 				<div style="text-align:center;">
-			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" type="Reset" name="Reset" value="Reset" >Reset</button>
-			  </div>
+  			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" style="margin-top:20px" type="submit"  name="reset" >Reset</button>
+  			 </div>
 				</td>
 			</tr>
 			  </tbody>

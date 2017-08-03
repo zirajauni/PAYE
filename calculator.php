@@ -272,7 +272,7 @@ $sticky          = $sd_data['sd_sticky_menu'];
  ?> 
  <form action="http://nairapayroll.com/paye-calculator/" method="POST">
 			<div class="table-responsive">
-  		 <table class=" w3-table-all w3-card-4 w3-panel w3-border-0" width="40%">
+  		 <table class=" w3-table-all w3-card-4 w3-panel w3-border-0">
  			
 
 			<thead>
@@ -335,12 +335,6 @@ $sticky          = $sd_data['sd_sticky_menu'];
 				<td>10% of Gross for companies with over 15 employees	</td>
 			</tr>
 			<tr>
-				<td>Other Employee benefits	</td>
-				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="-" ></td>
-				<td><input type="varchar" class="form-control w3-round-xxlarge" value="-" ></td>
-				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
-			</tr>
-			<tr>
 				<td>Total Benefit to Employee</td>
 				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$totalbenefit"),2,".",",");?>" disabled></td>
 				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$monthlytotalbenefit"),2,".",",");?>" disabled></td>
@@ -354,14 +348,11 @@ $sticky          = $sd_data['sd_sticky_menu'];
 				<td> </td>
 			</tr>
 			<tr>
-				<td style="border:none" align="center" valign="middle" colspan="2">
+				<td style="border:none" align="center" valign="middle" colspan="4">
 				<div style="text-align:center;">
-			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" type="submit"  name="submit" >Analyze  Payroll</button>
-			  </div>
-				</td>
-				<td style="border:none" align="center" valign="middle" colspan="2">
-				<div style="text-align:center;">
-			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" type="Reset" name="Reset" value="Reset" >Reset</button>
+			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" style="margin-top:20px" type="submit"  name="submit" >Analyze  Payroll</button>
+
+  			  <button  class="w3-button w3-green w3-round-large w3-hover-teal" style="margin-top:20px" type="submit"  name="reset" >Reset</button>
 			  </div>
 				</td>
 			</tr>
