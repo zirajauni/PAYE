@@ -198,12 +198,6 @@
 				<td>10% of Gross for companies with over 15 employees	</td>
 			</tr>
 			<tr>
-				<td>Other Employee benefits	</td>
-				<td><input type="varchar" class="form-control w3-round-xxlarge"  value="-" ></td>
-				<td><input type="varchar" class="form-control w3-round-xxlarge" value="-" ></td>
-				<td>Enter Healthcare and other benefits as determined by the company (0 if not entered) </td>
-			</tr>
-			<tr>
 				<td>Total Benefit to Employee</td>
 				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$totalbenefit"),2,".",",");?>" disabled></td>
 				<td><input type="varchar" class="form-control w3-round-xxlarge" value="<?php echo number_format(floatval("$monthlytotalbenefit"),2,".",",");?>" disabled></td>
